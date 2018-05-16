@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
+    <Reference Include="JpnKanaConversion">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio International Pack\Japanese Kana Converter Library\JpnKanaConversion.dll</HintPath>
+    </Reference>
+    <Reference Include="JpnKanaConvHelper">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio International Pack\Japanese Kana Converter Library\JpnKanaConvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
