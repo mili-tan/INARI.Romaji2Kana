@@ -2,6 +2,7 @@
 using IniParser.Model;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 using IniParser;
 using Microsoft.International.Converters;
 
@@ -15,32 +16,39 @@ namespace Romaji2Kana
 
         static void Main(string[] path)
         {
-            string ustFileStr = File.ReadAllText(string.Join("", path))
-                .Replace(UstHeader, "");
-
-            UstData = new FileIniDataParser().Parser.Parse(ustFileStr);
-
-            UstData.Sections.RemoveSection("#PREV");
-            UstData.Sections.RemoveSection("#NEXT");
-            UstData.Sections.RemoveSection("#SETTING");
-
-            foreach (var itemSection in UstData.Sections)
+            if (!string.IsNullOrWhiteSpace(string.Join("", path)))
             {
-                if (itemSection.Keys["Lyric"] != "R")
+                string ustFileStr = File.ReadAllText(string.Join("", path))
+                    .Replace(UstHeader, "");
+
+                UstData = new FileIniDataParser().Parser.Parse(ustFileStr);
+
+                UstData.Sections.RemoveSection("#PREV");
+                UstData.Sections.RemoveSection("#NEXT");
+                UstData.Sections.RemoveSection("#SETTING");
+
+                foreach (var itemSection in UstData.Sections)
                 {
-                    try
+                    if (itemSection.Keys["Lyric"] != "R")
                     {
-                        itemSection.Keys["Lyric"] = KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"]);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
+                        try
+                        {
+                            itemSection.Keys["Lyric"] = KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"]);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                        }
                     }
                 }
-            }
 
-            File.WriteAllText(String.Join("",path), 
-                UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"),EncodeJPN);
+                File.WriteAllText(String.Join("", path),
+                    UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
+            }
+            else
+            {
+                MessageBox.Show("未包含应有的参数，请作为UTAU插件使用");
+            }
         }
     }
 }
