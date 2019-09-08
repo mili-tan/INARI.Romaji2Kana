@@ -8,7 +8,7 @@ using Microsoft.International.Converters;
 
 namespace Romaji2Kana
 {
-    class Program
+    static class Program
     {
         public static IniData UstData;
         private static readonly Encoding EncodeJPN = Encoding.GetEncoding("Shift_JIS");
@@ -29,20 +29,18 @@ namespace Romaji2Kana
 
                 foreach (var itemSection in UstData.Sections)
                 {
-                    if (itemSection.Keys["Lyric"] != "R")
+                    if (itemSection.Keys["Lyric"] == "R") continue;
+                    try
                     {
-                        try
-                        {
-                            itemSection.Keys["Lyric"] = KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"]);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                        }
+                        itemSection.Keys["Lyric"] = KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"]);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
                     }
                 }
 
-                File.WriteAllText(String.Join("", path),
+                File.WriteAllText(string.Join("", path),
                     UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
             }
             else
