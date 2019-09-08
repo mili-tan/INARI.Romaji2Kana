@@ -1,24 +1,27 @@
 ﻿using System;
-using IniParser.Model;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using IniParser;
-using Microsoft.International.Converters;
+using IniParser.Model;
 
-namespace Romaji2Kana
+namespace Kana2Romaji
 {
     static class Program
     {
         public static IniData UstData;
+        private static Dictionary<string,string> RmDictionary = new Dictionary<string, string>();
         private static readonly Encoding EncodeJPN = Encoding.GetEncoding("Shift_JIS");
         private static readonly string UstHeader = "[#VERSION]\r\n" + "UST Version 1.20\r\n";
-
         static void Main(string[] path)
         {
+            foreach (var item in Resource.Table.Split(new[] {'\n'},StringSplitOptions.RemoveEmptyEntries))
+                RmDictionary.Add(item.Split(',')[0], item.Split(',')[1]);
+
             if (!string.IsNullOrWhiteSpace(string.Join("", path)))
             {
-                string ustFileStr = File.ReadAllText(string.Join("", path))
+                string ustFileStr = File.ReadAllText(string.Join("", path), EncodeJPN)
                     .Replace(UstHeader, "");
 
                 UstData = new FileIniDataParser().Parser.Parse(ustFileStr);
@@ -33,10 +36,10 @@ namespace Romaji2Kana
                     try
                     {
                         if (itemSection.Keys["Lyric"].Contains(" "))
-                            itemSection.Keys["Lyric"] = itemSection.Keys["Lyric"].Trim().Split(' ')[0] + " " + 
-                                                        KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"].Trim().Split(' ')[1]);
+                            itemSection.Keys["Lyric"] = itemSection.Keys["Lyric"].Trim().Split(' ')[0] + " " +
+                                                        RmDictionary[itemSection.Keys["Lyric"].Trim().Split(' ')[1]];
                         else
-                            itemSection.Keys["Lyric"] = KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"]);
+                            itemSection.Keys["Lyric"] = RmDictionary[itemSection.Keys["Lyric"].Trim()];
                     }
                     catch (Exception e)
                     {
@@ -45,11 +48,11 @@ namespace Romaji2Kana
                 }
 
                 File.WriteAllText(string.Join("", path),
-                    UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
+                    UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"));
             }
             else
             {
-                MessageBox.Show("未包含应有的参数，请作为UTAU插件使用");
+                MessageBox.Show(@"未包含应有的参数，请作为UTAU插件使用");
             }
         }
     }

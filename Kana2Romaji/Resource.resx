@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Table" xml:space="preserve">
+    <value>あ,a
+い,i
+う,u
+え,e
+お,o
+か,ka
+き,ki
+く,ku
+け,ke
+こ,ko
+さ,sa
+し,shi
+す,su
+せ,se
+そ,so
+た,ta
+ち,chi
+つ,tsu
+て,te
+と,to
+な,na
+に,ni
+ぬ,nu
+ね,ne
+の,no
+は,ha
+ひ,hi
+ふ,fu
+へ,he
+ほ,ho
+ま,ma
+み,mi
+む,mu
+め,me
+も,mo
+や,ya
+ゆ,yu
+よ,yo
+ら,ra
+り,ri
+る,ru
+れ,re
+ろ,ro
+わ,wa
+を,wo
+ん,n
+が,ga
+ぎ,gi
+ぐ,gu
+げ,ge
+ご,go
+ざ,za
+じ,ji
+ず,zu
+ぜ,ze
+ぞ,zo
+だ,da
+で,de
+ど,do
+ば,ba
+び,bi
+ぶ,bu
+べ,be
+ぼ,bo
+ぱ,pa
+ぴ,pi
+ぷ,pu
+ぺ,pe
+ぽ,po
+きゃ,kya
+きゅ,kyu
+きょ,kyo
+しゃ,sha
+しゅ,shu
+しょ,sho
+ちゃ,cha
+ちゅ,chu
+ちょ,cho
+にゃ,nya
+にゅ,nyu
+にょ,nyo
+ひゃ,hya
+ひゅ,hyu
+ひょ,hyo
+みゃ,mya
+みゅ,myu
+みょ,myo
+りゃ,rya
+りゅ,ryu
+りょ,ryo
+ぎゃ,gya
+ぎゅ,gyu
+ぎょ,gyo
+じゃ,ja
+じゅ,ju
+じょ,jo
+びゃ,bya
+びゅ,byu
+びょ,byo
+ぴゃ,pya
+ぴゅ,pyu
+ぴょ,pyo
+いぇ,ye
+きぇ,gye
+しぇ,she
+ちぇ,che
+にぇ,nye
+ひぇ,hye
+みぇ,mye
+りぇ,rye
+ぎぇ,gye
+じぇ,je
+びぇ,bye
+ぴぇ,pye
+うぁ,wa
+うぃ,wi
+うぇ,wu
+うぉ,wo
+くぁ,kua
+くぃ,kui
+くぇ,kue
+くぉ,kuo
+すぁ,sua
+すぃ,sui
+すぇ,sue
+すぉ,suo
+つぁ,tsa
+つぃ,tsi
+つぇ,tse
+つぉ,tso
+ぬぁ,nua
+ぬぃ,nui
+ぬぇ,nue
+ぬぉ,nuo
+ふぁ,fa
+ふぃ,fi
+ふぇ,fe
+ふぉ,fo
+むぁ,mua
+むぃ,mui
+むぇ,mue
+むぉ,muo
+るぁ,rua
+るぃ,rui
+るぇ,rue
+るぉ,ruo
+ぐぁ,gua
+ぐぃ,gui
+ぐぇ,gue
+ぐぉ,guo
+ずぁ,zua
+ずぃ,zui
+ずぇ,zue
+ずぉ,zuo
+ぶぁ,bua
+ぶぃ,bui
+ぶぇ,bue
+ぶぉ,buo
+ぷぁ,pua
+ぷぃ,pui
+ぷぇ,pue
+ぷぉ,puo
+てぃ,ti
+でぃ,di
+てゅ,tyu
+でゅ,dyu
+とぅ,tu
+どぅ,du</value>
+  </data>
+</root>
