@@ -48,7 +48,7 @@ namespace Kana2Romaji
                 }
 
                 File.WriteAllText(string.Join("", path),
-                    UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"));
+                    UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
             }
             else
             {
