@@ -54,11 +54,21 @@ namespace FoxyListener
             Get("/get", x => UstData.ToString());
             Get("/get/count", x => UstData.Sections.Count.ToString());
             Get("/get/full", x => UstFileStr);
+            Get("/get/count/nr", x =>
+            {
+                int i = 0;
+                foreach (var itemSection in UstData.Sections)
+                {
+                    if (itemSection.Keys["Lyric"] == "R") continue;
+                    i++;
+                }
+                return i.ToString();
+            });
             Get("/get/names", x =>
             {
-                var strs = new List<string>();
-                foreach (var item in UstData.Sections) strs.Add(item.SectionName);
-                return string.Join(Environment.NewLine, strs);
+                var nameList = new List<string>();
+                foreach (var item in UstData.Sections) nameList.Add(item.SectionName);
+                return string.Join(Environment.NewLine, nameList);
             });
             Get("/get/{section}/{key}", x =>
             {
