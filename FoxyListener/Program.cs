@@ -59,7 +59,7 @@ namespace FoxyListener
                 int i = 0;
                 foreach (var itemSection in UstData.Sections)
                 {
-                    if (itemSection.Keys["Lyric"] == "R") continue;
+                    if (itemSection.Keys["Lyric"].ToUpper() == "R") continue;
                     i++;
                 }
                 return i.ToString();
@@ -115,9 +115,10 @@ namespace FoxyListener
                 {
                     int i = 0;
                     var lyrics = ((string) Request.Query["val"].ToString()).Split(',');
+                    var rIgn = ((int)Request.Query["r"]);
                     foreach (var itemSection in UstData.Sections)
                     {
-                        if (itemSection.Keys["Lyric"] == "R") continue;
+                        if (itemSection.Keys["Lyric"].ToUpper() == "R" && rIgn == 1) continue;
                         itemSection.Keys["Lyric"] = lyrics[i];
                         i++;
                     }
@@ -138,7 +139,7 @@ namespace FoxyListener
                     var rIgn = ((int) Request.Query["r"]);
                     foreach (var itemSection in UstData.Sections)
                     {
-                        if (itemSection.Keys["Lyric"] == "R" && rIgn == 1) continue;
+                        if (itemSection.Keys["Lyric"].ToUpper() == "R" && rIgn == 1) continue;
                         itemSection.Keys["Lyric"] = lyrics[i];
                         i++;
                     }
