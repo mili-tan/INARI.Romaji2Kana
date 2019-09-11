@@ -36,7 +36,7 @@ namespace FoxyListener
             {
                 host.Start();
 
-                Console.WriteLine("Foxy is running on 2020 port");
+                Console.WriteLine("Foxy Listener is running on 2020 port");
                 Console.WriteLine("Press any [Enter] to close the host.");
                 Console.ReadLine();
             }
