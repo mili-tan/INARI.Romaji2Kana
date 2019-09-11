@@ -125,16 +125,17 @@ namespace FoxyListener
                 {
                     int i = 0;
                     var lyrics = ((string) Request.Query["val"].ToString()).Split(',');
+                    var rIgn = ((int) Request.Query["r"]);
                     foreach (var itemSection in UstData.Sections)
                     {
-                        if (itemSection.Keys["Lyric"] == "R") continue;
+                        if (itemSection.Keys["Lyric"] == "R" && rIgn == 1) continue;
                         itemSection.Keys["Lyric"] = lyrics[i];
                         i++;
                     }
 
                     File.WriteAllText(UstFilePath,
                         UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
-                    Timer t = new Timer(500) {Enabled = true};
+                    Timer t = new Timer(100) {Enabled = true};
                     t.Elapsed += T_Elapsed;
                     return "OK";
                 }
@@ -150,7 +151,7 @@ namespace FoxyListener
                 {
                     File.WriteAllText(UstFilePath,
                         UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
-                    Timer t = new Timer(500) { Enabled = true };
+                    Timer t = new Timer(100) { Enabled = true };
                     t.Elapsed += T_Elapsed;
                     return "OK";
                 }
