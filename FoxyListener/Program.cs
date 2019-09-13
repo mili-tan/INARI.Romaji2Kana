@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Timers;
+using System.Windows.Forms;
 using IniParser;
 using IniParser.Model;
 using Nancy;
 using Nancy.Hosting.Self;
 using static FoxyListener.Program;
+using Timer = System.Timers.Timer;
 
 namespace FoxyListener
 {
@@ -36,10 +38,14 @@ namespace FoxyListener
             {
                 host.Start();
 
-                Console.WriteLine("Foxy Listener is running on 2020 port");
-                Console.WriteLine("Press any [Enter] to close the host.");
-                Console.ReadLine();
+                Console.WriteLine(@"Foxy Listener is running on 2020 port");
+                Console.WriteLine(@"Press any [Enter] to close the host.");
             }
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+
             File.WriteAllText(string.Join("", UstFilePath),
                 UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
         }
