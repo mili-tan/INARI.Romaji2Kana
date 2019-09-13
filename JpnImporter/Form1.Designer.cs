@@ -43,14 +43,14 @@
             this.richTextBox.Location = new System.Drawing.Point(14, 16);
             this.richTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(651, 296);
+            this.richTextBox.Size = new System.Drawing.Size(651, 139);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
             // 
             // button
             // 
             this.button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button.Location = new System.Drawing.Point(578, 319);
+            this.button.Location = new System.Drawing.Point(578, 162);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(87, 30);
             this.button.TabIndex = 1;
@@ -61,7 +61,7 @@
             // buttonConvert
             // 
             this.buttonConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonConvert.Location = new System.Drawing.Point(12, 319);
+            this.buttonConvert.Location = new System.Drawing.Point(12, 162);
             this.buttonConvert.Name = "buttonConvert";
             this.buttonConvert.Size = new System.Drawing.Size(87, 30);
             this.buttonConvert.TabIndex = 2;
@@ -73,14 +73,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 360);
+            this.ClientSize = new System.Drawing.Size(678, 203);
             this.Controls.Add(this.buttonConvert);
             this.Controls.Add(this.button);
             this.Controls.Add(this.richTextBox);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JpnImporter";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }

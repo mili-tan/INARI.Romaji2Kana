@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -14,8 +16,13 @@ namespace JpnImporter
 
         private void Button_Click(object sender, EventArgs e)
         {
-            new WebClient().DownloadString(@"http://127.0.0.1:2020/set/lyric/wq?r=1&val=" +
-                                           string.Join(",", richTextBox.SelectedText.Trim().ToCharArray()));
+            if (PortIsUse(2020))
+                new WebClient().DownloadString(@"http://127.0.0.1:2020/set/lyric/wq?r=1&val=" +
+                                               string.Join(",", richTextBox.SelectedText.Trim().ToCharArray()));
+            else
+            {
+                MessageBox.Show(@"Foxy Listener is not running");
+            }
         }
 
         private void ButtonConvert_Click(object sender, EventArgs e)
@@ -31,6 +38,15 @@ namespace JpnImporter
                 if (hr != 0) throw Marshal.GetExceptionForHR(hr);
                 richTextBox.Text += yomigana + Environment.NewLine;
             }
+        }
+
+        public static bool PortIsUse(int port)
+        {
+            IPEndPoint[] ipEndPointsTcp = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpListeners();
+            IPEndPoint[] ipEndPointsUdp = IPGlobalProperties.GetIPGlobalProperties().GetActiveUdpListeners();
+
+            return ipEndPointsTcp.Any(endPoint => endPoint.Port == port)
+                   || ipEndPointsUdp.Any(endPoint => endPoint.Port == port);
         }
     }
 
