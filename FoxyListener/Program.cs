@@ -40,11 +40,11 @@ namespace FoxyListener
 
                 Console.WriteLine(@"Foxy Listener is running on 2020 port");
                 Console.WriteLine(@"Press any [Enter] to close the host.");
-            }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Form1());
+            }
 
             File.WriteAllText(string.Join("", UstFilePath),
                 UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
@@ -182,7 +182,7 @@ namespace FoxyListener
 
         private static void T_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Console.WriteLine("Exit!");
+            Application.Exit();
             Environment.Exit(0);
         }
     }
