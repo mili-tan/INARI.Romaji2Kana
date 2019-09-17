@@ -18,7 +18,7 @@ namespace JpnImporter
         {
             if (PortIsUse(2020))
                 new WebClient().DownloadString(@"http://127.0.0.1:2020/set/lyric/wq?r=1&val=" +
-                                               string.Join(",", richTextBox.SelectedText.Trim().ToCharArray()));
+                                               string.Join(",", richTextBox.SelectedText.Replace(Environment.NewLine,"").Trim().ToCharArray()));
             else
             {
                 MessageBox.Show(@"Foxy Listener is not running");
