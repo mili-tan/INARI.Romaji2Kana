@@ -76,6 +76,12 @@ namespace FoxyListener
                 foreach (var item in UstData.Sections) nameList.Add(item.SectionName);
                 return string.Join(Environment.NewLine, nameList);
             });
+            Get("/get/lyric", x =>
+            {
+                var nameList = new List<string>();
+                foreach (var item in UstData.Sections) nameList.Add(item.Keys["Lyric"]);
+                return string.Join(" ", nameList);
+            });
             Get("/get/{section}/{key}", x =>
             {
                 try
