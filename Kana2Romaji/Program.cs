@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using IniParser;
 using IniParser.Model;
@@ -16,8 +17,10 @@ namespace Kana2Romaji
         private static readonly string UstHeader = "[#VERSION]\r\n" + "UST Version 1.20\r\n";
         static void Main(string[] path)
         {
-            foreach (var item in Resource.Table.Split(new[] {'\n'},StringSplitOptions.RemoveEmptyEntries))
+            Parallel.ForEach(Resource.Table.Split(new[] {'\n'}, StringSplitOptions.RemoveEmptyEntries), item =>
+            {
                 RmDictionary.Add(item.Split(',')[0], item.Split(',')[1]);
+            });
 
             if (!string.IsNullOrWhiteSpace(string.Join("", path)))
             {
@@ -30,14 +33,16 @@ namespace Kana2Romaji
                 UstData.Sections.RemoveSection("#NEXT");
                 UstData.Sections.RemoveSection("#SETTING");
 
-                foreach (var itemSection in UstData.Sections)
+                //foreach (var itemSection in UstData.Sections)
+                Parallel.ForEach(UstData.Sections, itemSection =>
                 {
-                    if (itemSection.Keys["Lyric"] == "R") continue;
+                    if (itemSection.Keys["Lyric"] == "R") return;
                     try
                     {
                         if (itemSection.Keys["Lyric"].Contains(" "))
                             itemSection.Keys["Lyric"] = itemSection.Keys["Lyric"].Trim().Split(' ')[0] + " " +
-                                                        RmDictionary[itemSection.Keys["Lyric"].Trim().Split(' ')[1]];
+                                                        RmDictionary[
+                                                            itemSection.Keys["Lyric"].Trim().Split(' ')[1]];
                         else
                             itemSection.Keys["Lyric"] = RmDictionary[itemSection.Keys["Lyric"].Trim()];
                     }
@@ -45,7 +50,7 @@ namespace Kana2Romaji
                     {
                         Console.WriteLine(e);
                     }
-                }
+                });
 
                 File.WriteAllText(string.Join("", path),
                     UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);

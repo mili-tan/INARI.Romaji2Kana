@@ -3,6 +3,7 @@ using IniParser.Model;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 using IniParser;
 using Microsoft.International.Converters;
 
@@ -27,14 +28,16 @@ namespace Romaji2Kana
                 UstData.Sections.RemoveSection("#NEXT");
                 UstData.Sections.RemoveSection("#SETTING");
 
-                foreach (var itemSection in UstData.Sections)
+                //foreach (var itemSection in UstData.Sections)
+                Parallel.ForEach(UstData.Sections, itemSection =>
                 {
-                    if (itemSection.Keys["Lyric"] == "R") continue;
+                    if (itemSection.Keys["Lyric"] == "R") return;
                     try
                     {
                         if (itemSection.Keys["Lyric"].Contains(" "))
-                            itemSection.Keys["Lyric"] = itemSection.Keys["Lyric"].Trim().Split(' ')[0] + " " + 
-                                                        KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"].Trim().Split(' ')[1]);
+                            itemSection.Keys["Lyric"] = itemSection.Keys["Lyric"].Trim().Split(' ')[0] + " " +
+                                                        KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"].Trim()
+                                                            .Split(' ')[1]);
                         else
                             itemSection.Keys["Lyric"] = KanaConverter.RomajiToHiragana(itemSection.Keys["Lyric"]);
                     }
@@ -42,7 +45,7 @@ namespace Romaji2Kana
                     {
                         Console.WriteLine(e);
                     }
-                }
+                });
 
                 File.WriteAllText(string.Join("", path),
                     UstHeader + UstData.ToString().Replace(" = ", "=").Replace("\r\n\r\n", "\r\n"), EncodeJPN);
