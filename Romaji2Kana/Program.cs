@@ -2,7 +2,6 @@
 using IniParser.Model;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
 using System.Threading.Tasks;
 using IniParser;
 using Microsoft.International.Converters;
@@ -17,6 +16,7 @@ namespace Romaji2Kana
 
         static void Main(string[] path)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             if (!string.IsNullOrWhiteSpace(string.Join("", path)))
             {
                 string ustFileStr = File.ReadAllText(string.Join("", path))
@@ -52,7 +52,8 @@ namespace Romaji2Kana
             }
             else
             {
-                MessageBox.Show("未包含应有的参数，请作为UTAU插件使用");
+                Console.WriteLine("未包含应有的参数，请作为UTAU插件使用");
+                Console.ReadKey();
             }
         }
     }

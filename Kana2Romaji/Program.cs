@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using IniParser;
 using IniParser.Model;
 
@@ -17,6 +16,7 @@ namespace Kana2Romaji
         private static readonly string UstHeader = "[#VERSION]\r\n" + "UST Version 1.20\r\n";
         static void Main(string[] path)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Parallel.ForEach(Resource.Table.Split(new[] {'\n'}, StringSplitOptions.RemoveEmptyEntries), item =>
             {
                 RmDictionary.Add(item.Split(',')[0], item.Split(',')[1]);
@@ -57,7 +57,8 @@ namespace Kana2Romaji
             }
             else
             {
-                MessageBox.Show(@"未包含应有的参数，请作为UTAU插件使用");
+                Console.WriteLine(@"未包含应有的参数，请作为UTAU插件使用");
+                Console.ReadKey();
             }
         }
     }
